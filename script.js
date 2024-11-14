@@ -48,4 +48,11 @@ function searchWord() {
         lesson.style.display = found ? 'block' : 'none';
     });
 }
+function resetSearch() {
+    const lessons = document.querySelectorAll('.lesson ul li');
+    document.getElementById('search-input').value = '';
+    lessons.forEach(item => {
+        item.style.display = 'list-item';
+    });
+}
 
