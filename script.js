@@ -1,32 +1,30 @@
-// Search Function
 function searchWord() {
-    const input = document.getElementById("search-input").value.toLowerCase();
+    const searchInput = document.getElementById("search-input").value.toLowerCase();
     const lessons = document.querySelectorAll(".lesson");
 
-    lessons.forEach(lesson => {
-        const words = lesson.getElementsByTagName("strong");
-        let found = false;
+    lessons.forEach((lesson) => {
+        let hasMatch = false;
+        const words = lesson.querySelectorAll("li");
 
-        Array.from(words).forEach(word => {
-            if (word.textContent.toLowerCase().includes(input)) {
-                lesson.style.display = "block";
-                found = true;
+        words.forEach((word) => {
+            const wordText = word.textContent.toLowerCase();
+            
+            if (searchInput && wordText.includes(searchInput)) {
+                hasMatch = true;
+                // Highlight the matching word
+                const regex = new RegExp(`(${searchInput})`, "gi");
+                word.innerHTML = word.innerHTML.replace(regex, "<span class='highlight'>$1</span>");
+            } else {
+                // Remove any previous highlights if there's no match
+                word.innerHTML = word.innerHTML.replace(/<span class='highlight'>(.*?)<\/span>/g, "$1");
             }
         });
 
-        if (!found) {
+        // Show or hide the lesson based on whether it has a match
+        if (hasMatch) {
+            lesson.style.display = "block";
+        } else {
             lesson.style.display = "none";
         }
     });
 }
-
-// Scroll Animation for Lessons
-document.addEventListener("scroll", () => {
-    const lessons = document.querySelectorAll(".lesson");
-    lessons.forEach(lesson => {
-        const rect = lesson.getBoundingClientRect();
-        if (rect.top < window.innerHeight - 100) {
-            lesson.classList.add("visible");
-        }
-    });
-});
