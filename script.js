@@ -32,3 +32,27 @@ function resetSearch() {
         lesson.style.display = "block";
     });
 }
+function searchWord() {
+    const input = document.getElementById('search-input').value.toLowerCase();
+    const lessons = document.querySelectorAll('.lesson');
+    let found = false;
+
+    lessons.forEach(lesson => {
+        const words = lesson.querySelectorAll('li');
+        words.forEach(wordItem => {
+            if (wordItem.innerText.toLowerCase().includes(input)) {
+                wordItem.style.backgroundColor = 'yellow';
+                found = true;
+            } else {
+                wordItem.style.backgroundColor = 'white';
+            }
+        });
+    });
+
+    const message = document.getElementById('search-message');
+    if (!found) {
+        message.innerText = "Word not found.";
+    } else {
+        message.innerText = "";
+    }
+}
