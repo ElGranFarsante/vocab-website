@@ -22,31 +22,70 @@
     </div>
 
     <main>
-        <section id="lesson1" class="lesson">
+        <section id="lesson1" class="lesson" style="border-left: 5px solid #4CAF50;">
             <h2>Lesson 1</h2>
             <ul>
-                <li>Word: <strong>Example</strong> - Definition: This is a sample definition.</li>
+                <li>
+                    Word: <strong>Example</strong> - Definition: This is a sample definition.
+                    <br>
+                    <img src="example-image.jpg" alt="Example Image" style="width:100px; height:auto; margin-top: 10px;">
+                    <br>
+                    <audio controls>
+                        <source src="example-audio.mp3" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </li>
                 <!-- Add more words as needed -->
             </ul>
         </section>
 
-        <section id="lesson2" class="lesson">
+        <section id="lesson2" class="lesson" style="border-left: 5px solid #2196F3;">
             <h2>Lesson 2</h2>
             <ul>
-                <li>Word: <strong>Another</strong> - Definition: Another sample definition.</li>
+                <li>
+                    Word: <strong>Another</strong> - Definition: Another sample definition.
+                    <br>
+                    <img src="another-image.jpg" alt="Another Image" style="width:100px; height:auto; margin-top: 10px;">
+                    <br>
+                    <audio controls>
+                        <source src="another-audio.mp3" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </li>
                 <!-- Add more words as needed -->
             </ul>
         </section>
 
-        <section id="lesson3" class="lesson">
+        <section id="lesson3" class="lesson" style="border-left: 5px solid #FF5722;">
             <h2>Lesson 3</h2>
             <ul>
-                <li>Word: <strong>Sample</strong> - Definition: Just a sample word.</li>
+                <li>
+                    Word: <strong>Sample</strong> - Definition: Just a sample word.
+                    <br>
+                    <img src="sample-image.jpg" alt="Sample Image" style="width:100px; height:auto; margin-top: 10px;">
+                    <br>
+                    <audio controls>
+                        <source src="sample-audio.mp3" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </li>
                 <!-- Add more words as needed -->
             </ul>
         </section>
     </main>
 
-    <script src="scripts.js"></script>
+    <script>
+        function searchWord() {
+            const input = document.getElementById("search-input").value.toLowerCase();
+            const lessons = document.querySelectorAll(".lesson");
+            lessons.forEach(lesson => {
+                if (lesson.innerText.toLowerCase().includes(input)) {
+                    lesson.style.display = "block";
+                } else {
+                    lesson.style.display = "none";
+                }
+            });
+        }
+    </script>
 </body>
 </html>
