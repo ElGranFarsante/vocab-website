@@ -13,5 +13,18 @@
             }
         });
     });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const lessonLinks = document.querySelectorAll('header nav ul li a');
+    lessonLinks.forEach(link => {
+        link.addEventListener('click', (event) => {
+            event.preventDefault();
+            const sectionId = link.getAttribute('href').substring(1);
+            const section = document.getElementById(sectionId);
+            section.scrollIntoView({ behavior: 'smooth' });
+        });
+    });
+});
+
 </script>
 
