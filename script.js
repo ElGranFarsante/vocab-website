@@ -27,4 +27,25 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 </script>
+function searchWord() {
+    const input = document.getElementById('search-input').value.toLowerCase();
+    const lessons = document.querySelectorAll('.lesson');
+
+    lessons.forEach(lesson => {
+        const words = lesson.querySelectorAll('li');
+        let found = false;
+
+        words.forEach(word => {
+            if (word.textContent.toLowerCase().includes(input)) {
+                word.style.display = 'list-item';
+                found = true;
+            } else {
+                word.style.display = 'none';
+            }
+        });
+
+        // Show or hide the entire lesson section based on search results
+        lesson.style.display = found ? 'block' : 'none';
+    });
+}
 
